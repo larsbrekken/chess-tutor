@@ -8,7 +8,3 @@ A chess tutor that helps players improve their game. It explains moves, points o
 - Learn why a move is strong or weak, not just which move is best
 - Practice openings, tactics, and endgames
 - Track progress over time
-
-## Status
-
-Early development. More to come.
