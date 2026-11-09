@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="page-body lessons">
+  <aside class="lesson-menu" id="lesson-menu">
+    <p class="muted">Loading lessons…</p>
+  </aside>
+
+  <div class="board-wrap">
+    <div id="board"></div>
+  </div>
+
+  <section class="lesson-panel">
+    <h1 id="lesson-title">Choose a lesson</h1>
+    <div class="chapters" id="chapters"></div>
+
+    <div class="move-label" id="move-label"></div>
+    <p class="lesson-text" id="lesson-text"></p>
+
+    <div class="step-controls" id="step-controls" hidden>
+      <button id="btn-first" title="First (Home)">⏮</button>
+      <button id="btn-prev" title="Back (←)">◀</button>
+      <button id="btn-next" title="Forward (→)">▶</button>
+      <button id="btn-last" title="Last (End)">⏭</button>
+      <span class="step-count" id="step-count"></span>
+    </div>
+
+    <div class="move-list" id="move-list"></div>
+  </section>
+</main>
+<script type="module" src="{{ url_for('static', filename='js/lessons.js') }}"></script>
+{% endblock %}

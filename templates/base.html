@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Chess Tutor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/chessground/assets/chessground.base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/chessground/assets/chessground.brown.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/chessground/assets/chessground.cburnett.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body class="page-{{ page }}">
+  <header class="topbar">
+    <span class="brand">Chess Tutor</span>
+    <nav>
+      <a href="{{ url_for('lessons_page') }}" {% if page == 'lessons' %}class="active"{% endif %}>Lessons</a>
+      <a href="{{ url_for('editor_page') }}" {% if page == 'editor' %}class="active"{% endif %}>Board editor</a>
+    </nav>
+  </header>
+  {% block content %}{% endblock %}
+</body>
+</html>

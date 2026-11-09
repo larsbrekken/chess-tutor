@@ -1,28 +1,64 @@
+/* ---- Page layout --------------------------------------------------------- */
+
 :root {
-  /* One square's size; the board is 8 squares wide and scales with the window. */
-  --sq: min(10vh, 9vw);
+  --topbar: 3rem;
+  /* One square's size; each page sets it so the board fills the window. */
+  --sq: min(calc((100vh - var(--topbar) - 8rem) / 8), 9vw);
+}
+
+.page-lessons {
+  /* Leave room for the menu and the explanation panel beside the board. */
+  --sq: min(calc((100vh - var(--topbar) - 3rem) / 8), calc((100vw - 42rem) / 8));
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
   background: #2b2b2b;
   color: #ddd;
   font-family: system-ui, sans-serif;
 }
 
-.editor {
+.topbar {
+  height: var(--topbar);
   display: flex;
   align-items: center;
-  gap: calc(var(--sq) * 0.4);
+  gap: 2rem;
+  padding: 0 1.5rem;
+  background: #1f1f1f;
+}
+
+.brand {
+  font-weight: 700;
+  color: #f0d9b5;
+}
+
+.topbar nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.topbar a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.topbar a:hover,
+.topbar a.active {
+  color: #fff;
+}
+
+.page-body {
+  min-height: calc(100vh - var(--topbar));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .board-wrap {
+  flex: none;
   width: calc(var(--sq) * 8);
   height: calc(var(--sq) * 8);
 }
@@ -32,9 +68,32 @@ body {
   height: 100%;
 }
 
-/* Board coordinates, scaled with the board so they are readable on a projector.
-   Rank numbers sit in the top-left corner of the a-file squares, file letters
-   in the bottom-right corner of the first-rank squares. */
+button {
+  font: inherit;
+  border: none;
+  border-radius: 4px;
+  background: #555;
+  color: #eee;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #666;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.muted {
+  color: #999;
+}
+
+/* ---- Board coordinates ----------------------------------------------------
+   Scaled with the board so they are readable on a projector. Rank numbers sit
+   in the top-left corner of the edge squares, file letters in the bottom-right. */
+
 .cg-wrap coords {
   font-size: calc(var(--sq) * 0.17);
   font-weight: 600;
@@ -71,6 +130,14 @@ body {
   padding: 0 calc(var(--sq) * 0.05) calc(var(--sq) * 0.04) 0;
 }
 
+/* ---- Board editor -------------------------------------------------------- */
+
+.editor {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--sq) * 0.4);
+}
+
 /* Spare-piece trays. They carry the cg-wrap class so the piece images apply. */
 .cg-wrap.tray {
   display: flex;
@@ -104,19 +171,175 @@ body {
 .controls button {
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  background: #555;
-  color: #eee;
-  cursor: pointer;
-}
-
-.controls button:hover {
-  background: #666;
 }
 
 .hint {
   margin: 0;
   color: #999;
   font-size: 0.9rem;
+}
+
+/* ---- Lessons ------------------------------------------------------------- */
+
+.page-body.lessons {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.lesson-menu {
+  flex: none;
+  width: 15rem;
+  max-height: calc(var(--sq) * 8);
+  overflow-y: auto;
+}
+
+.lesson-menu h2 {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+}
+
+.lesson-menu ul {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+.lesson-menu a {
+  display: block;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  color: #ddd;
+  text-decoration: none;
+}
+
+.lesson-menu a:hover {
+  background: #3a3a3a;
+}
+
+.lesson-menu a.active {
+  background: #4a4a4a;
+  color: #fff;
+}
+
+.load-errors {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-left: 3px solid #c0504d;
+  background: #3a2b2b;
+  font-size: 0.85rem;
+}
+
+.load-errors p {
+  margin: 0.5rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.error {
+  color: #e88;
+}
+
+.lesson-panel {
+  flex: none;
+  width: 22rem;
+  max-height: calc(var(--sq) * 8);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lesson-panel h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.chapters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chapters:empty {
+  display: none;
+}
+
+.chapters button {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.9rem;
+  background: #3a3a3a;
+}
+
+.chapters button.active {
+  background: #6a6a6a;
+  color: #fff;
+}
+
+.move-label {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f0d9b5;
+  min-height: 1.4em;
+}
+
+/* The explanation is the main thing the class reads, so make it large. */
+.lesson-text {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.45;
+  min-height: 6em;
+}
+
+.step-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-controls[hidden] {
+  display: none;
+}
+
+.step-controls button {
+  font-size: 1.2rem;
+  padding: 0.4rem 0.9rem;
+}
+
+.step-count {
+  margin-left: 0.5rem;
+  color: #999;
+}
+
+.move-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.3rem;
+  overflow-y: auto;
+}
+
+.move-number {
+  color: #888;
+  margin-left: 0.3rem;
+}
+
+.move-list .move {
+  padding: 0.1rem 0.35rem;
+  background: none;
+  color: #ccc;
+}
+
+.move-list .move:hover {
+  background: #3a3a3a;
+}
+
+.move-list .move.current {
+  background: #f0d9b5;
+  color: #222;
 }

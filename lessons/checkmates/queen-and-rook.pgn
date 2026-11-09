@@ -1,0 +1,15 @@
+[Event "Checkmate with queen and rook"]
+[SetUp "1"]
+[FEN "8/8/8/2k5/8/6Q1/7R/4K3 w - - 0 1"]
+
+{ The queen and rook work together like the rungs of a ladder.
+  One piece cuts the king off while the other gives check. }
+1. Rh4 { [%cal Gh4a4] The rook cuts the king off: it can no longer reach the 4th rank. }
+1... Kd5
+2. Qg5+ { [%cal Gg5d5,Gh4a4] Check along the 5th rank. The king must step up to the 6th. }
+2... Kc6
+3. Rh6+ { [%cal Gh6c6,Gg5a5] Now the rook checks, and the queen guards the rank below. }
+3... Kb7
+4. Qg7+ { [%cal Gg7b7] The queen climbs past the rook and checks on the 7th rank. }
+4... Kc8
+5. Rh8# { [%cal Gh8c8,Gg7a7] [%csl Rc8] Checkmate! The king is stuck on the edge of the board. }

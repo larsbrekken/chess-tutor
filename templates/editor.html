@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="page-body">
+  <div class="editor">
+    <div class="cg-wrap tray" id="tray-black" data-color="black"></div>
+    <div class="board-wrap">
+      <div id="board"></div>
+    </div>
+    <div class="cg-wrap tray" id="tray-white" data-color="white"></div>
+  </div>
+
+  <div class="controls">
+    <button id="btn-start">Starting position</button>
+    <button id="btn-clear">Clear board</button>
+  </div>
+
+  <p class="hint">
+    Drag pieces from the sides onto the board. Drag a piece off the board to remove it.
+  </p>
+</main>
+<script type="module" src="{{ url_for('static', filename='js/editor.js') }}"></script>
+{% endblock %}
