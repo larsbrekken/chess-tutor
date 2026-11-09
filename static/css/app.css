@@ -1,0 +1,122 @@
+:root {
+  /* One square's size; the board is 8 squares wide and scales with the window. */
+  --sq: min(10vh, 9vw);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: #2b2b2b;
+  color: #ddd;
+  font-family: system-ui, sans-serif;
+}
+
+.editor {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--sq) * 0.4);
+}
+
+.board-wrap {
+  width: calc(var(--sq) * 8);
+  height: calc(var(--sq) * 8);
+}
+
+#board {
+  width: 100%;
+  height: 100%;
+}
+
+/* Board coordinates, scaled with the board so they are readable on a projector.
+   Rank numbers sit in the top-left corner of the a-file squares, file letters
+   in the bottom-right corner of the first-rank squares. */
+.cg-wrap coords {
+  font-size: calc(var(--sq) * 0.17);
+  font-weight: 600;
+}
+
+.cg-wrap coords.ranks {
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 100%;
+}
+
+.cg-wrap coords.files {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.cg-wrap coords coord {
+  flex: 1 1 0;
+  line-height: 1;
+}
+
+.cg-wrap coords.ranks coord {
+  transform: none;
+  padding: calc(var(--sq) * 0.04) 0 0 calc(var(--sq) * 0.05);
+}
+
+.cg-wrap coords.files coord {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 calc(var(--sq) * 0.05) calc(var(--sq) * 0.04) 0;
+}
+
+/* Spare-piece trays. They carry the cg-wrap class so the piece images apply. */
+.cg-wrap.tray {
+  display: flex;
+  flex-direction: column;
+  width: var(--sq);
+  padding: calc(var(--sq) * 0.1);
+  background: #3a3a3a;
+  border-radius: 6px;
+}
+
+.cg-wrap.tray piece {
+  position: static;
+  display: block;
+  width: var(--sq);
+  height: var(--sq);
+  pointer-events: auto;
+  cursor: grab;
+  will-change: auto;
+}
+
+.cg-wrap.tray piece:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+.controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.controls button {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #555;
+  color: #eee;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: #666;
+}
+
+.hint {
+  margin: 0;
+  color: #999;
+  font-size: 0.9rem;
+}
