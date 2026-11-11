@@ -1,0 +1,60 @@
+/* Blue board theme. Replaces chessground's brown theme: the board colours,
+   move highlights, and coordinate label colours. */
+
+:root {
+  --board-light: #cfd8e0;
+  --board-dark: #5a8bb9;
+}
+
+cg-board {
+  background-color: var(--board-light);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'><rect width='8' height='8' fill='%23cfd8e0'/><path fill='%235a8bb9' d='M1 0h1v1h-1zM3 0h1v1h-1zM5 0h1v1h-1zM7 0h1v1h-1zM0 1h1v1h-1zM2 1h1v1h-1zM4 1h1v1h-1zM6 1h1v1h-1zM1 2h1v1h-1zM3 2h1v1h-1zM5 2h1v1h-1zM7 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM1 4h1v1h-1zM3 4h1v1h-1zM5 4h1v1h-1zM7 4h1v1h-1zM0 5h1v1h-1zM2 5h1v1h-1zM4 5h1v1h-1zM6 5h1v1h-1zM1 6h1v1h-1zM3 6h1v1h-1zM5 6h1v1h-1zM7 6h1v1h-1zM0 7h1v1h-1zM2 7h1v1h-1zM4 7h1v1h-1zM6 7h1v1h-1z'/></svg>");
+}
+
+/* Highlights for moves, selection and check (same as chessground's brown theme). */
+cg-board square.move-dest {
+  background: radial-gradient(rgba(20, 85, 30, 0.5) 22%, #208530 0, rgba(0, 0, 0, 0.3) 0, rgba(0, 0, 0, 0) 0);
+}
+cg-board square.oc.move-dest {
+  background: radial-gradient(transparent 0%, transparent 80%, rgba(20, 85, 0, 0.3) 80%);
+}
+cg-board square.move-dest:hover {
+  background: rgba(20, 85, 30, 0.3);
+}
+cg-board square.last-move {
+  background-color: rgba(155, 199, 0, 0.41);
+}
+cg-board square.selected {
+  background-color: rgba(20, 85, 30, 0.5);
+}
+cg-board square.check {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(231, 0, 0, 1) 25%,
+    rgba(169, 0, 0, 0) 89%,
+    rgba(158, 0, 0, 0) 100%
+  );
+}
+
+/* Coordinate labels sit on the edge squares (see app.css): rank numbers on the
+   left-hand file, file letters on the bottom rank. Each label takes the colour
+   of the opposite square so it stands out. With White at the bottom, rank 1 and
+   the a-file start on a dark square; with Black at the bottom, on a light one. */
+.cg-wrap.orientation-white coords.ranks coord:nth-child(odd),
+.cg-wrap.orientation-white coords.files coord:nth-child(odd),
+.cg-wrap.orientation-black coords.ranks coord:nth-child(even),
+.cg-wrap.orientation-black coords.files coord:nth-child(even) {
+  color: var(--board-light);
+}
+
+.cg-wrap.orientation-white coords.ranks coord:nth-child(even),
+.cg-wrap.orientation-white coords.files coord:nth-child(even),
+.cg-wrap.orientation-black coords.ranks coord:nth-child(odd),
+.cg-wrap.orientation-black coords.files coord:nth-child(odd) {
+  color: var(--board-dark);
+}
+
+.cg-wrap coords {
+  opacity: 1;
+}
