@@ -1,0 +1,8 @@
+[Event "Win the queen"]
+[SetUp "1"]
+[FEN "rnbqk2r/ppP2p2/5p1p/2b5/8/5N2/PPP1PPPP/RN1QKB1R b KQkq - 0 1"]
+
+{ Black to move and win the queen. }
+1... Bxf2+ { [%cal Gc5f2] Check! The king has to take the bishop. It can't go to d2, because the black queen covers the open d-file. [%cal Rd8d2] }
+2. Kxf2
+2... Qxd1 { [%cal Gd8d1] The king has walked away from its queen, and nothing can take back on d1. Black wins the queen for a bishop. }

@@ -9,11 +9,12 @@ from pathlib import Path
 
 from flask import Flask, jsonify, render_template
 
-from lessons import load_library
+from library import load_lesson_library, load_puzzle_library
 
 HOST = "127.0.0.1"
 PORT = 8765
 LESSONS_DIR = Path(__file__).parent / "lessons"
+PUZZLES_DIR = Path(__file__).parent / "puzzles"
 
 app = Flask(__name__)
 
@@ -23,6 +24,11 @@ def lessons_page():
     return render_template("lessons.html", page="lessons")
 
 
+@app.route("/puzzles")
+def puzzles_page():
+    return render_template("puzzles.html", page="puzzles")
+
+
 @app.route("/editor")
 def editor_page():
     return render_template("editor.html", page="editor")
@@ -30,8 +36,13 @@ def editor_page():
 
 @app.route("/api/lessons")
 def lessons_api():
-    # Read from disk on every request so new lesson files show up on refresh.
-    return jsonify(load_library(LESSONS_DIR))
+    # Read from disk on every request so new files show up on refresh.
+    return jsonify(load_lesson_library(LESSONS_DIR))
+
+
+@app.route("/api/puzzles")
+def puzzles_api():
+    return jsonify(load_puzzle_library(PUZZLES_DIR))
 
 
 if __name__ == "__main__":

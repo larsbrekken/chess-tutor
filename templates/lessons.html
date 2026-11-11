@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<main class="page-body lessons">
-  <aside class="lesson-menu" id="lesson-menu">
+<main class="page-body viewer">
+  <aside class="menu" id="lesson-menu">
     <p class="muted">Loading lessons…</p>
   </aside>
 
@@ -9,12 +9,12 @@
     <div id="board"></div>
   </div>
 
-  <section class="lesson-panel">
+  <section class="panel">
     <h1 id="lesson-title">Choose a lesson</h1>
     <div class="chapters" id="chapters"></div>
 
     <div class="move-label" id="move-label"></div>
-    <p class="lesson-text" id="lesson-text"></p>
+    <p class="big-text" id="lesson-text"></p>
 
     <div class="step-controls" id="step-controls" hidden>
       <button id="btn-first" title="First (Home)">⏮</button>

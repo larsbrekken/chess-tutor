@@ -13,6 +13,7 @@
     <span class="brand">Chess Tutor</span>
     <nav>
       <a href="{{ url_for('lessons_page') }}" {% if page == 'lessons' %}class="active"{% endif %}>Lessons</a>
+      <a href="{{ url_for('puzzles_page') }}" {% if page == 'puzzles' %}class="active"{% endif %}>Puzzles</a>
       <a href="{{ url_for('editor_page') }}" {% if page == 'editor' %}class="active"{% endif %}>Board editor</a>
     </nav>
   </header>

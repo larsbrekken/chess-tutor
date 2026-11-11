@@ -5,6 +5,7 @@ A teaching board for chess tutors. The tutor runs it on their own computer and s
 ## Features
 
 - A library of lessons on chess concepts, each a step-by-step demonstration with explanations, arrows and highlighted squares
+- Puzzles: play the move the class suggests and the app says whether it's right, with an option to show the solution
 - A board editor for setting up any position and moving pieces from there
 
 The app doesn't evaluate moves or need user accounts.
@@ -12,7 +13,7 @@ The app doesn't evaluate moves or need user accounts.
 ## Tech stack
 
 - Python with [Flask](https://flask.palletsprojects.com/), run locally on the tutor's computer
-- [python-chess](https://python-chess.readthedocs.io/) reads the lesson files
+- [python-chess](https://python-chess.readthedocs.io/) reads the lesson and puzzle files
 - The board is [chessground](https://github.com/lichess-org/chessground) (the lichess board), included in `static/vendor/` so the app works offline
 
 ## Running
@@ -55,6 +56,32 @@ A file can hold several games one after another. They become chapters of the les
 To control the order of categories and lessons, start the names with numbers, such as `01-checkmates/02-queen-and-rook.pgn`. The numbers aren't shown in the app.
 
 **Writing lessons in lichess:** create a [study](https://lichess.org/study), set up the position, play the moves, write comments and right-click-drag to draw arrows. Then export it as PGN and save the file in `lessons/`.
+
+## Puzzles
+
+Open **Puzzles** and pick one from the menu. The board shows the position and the question, for example "White to move and mate in 2".
+
+- Play the move the class suggests on the board. Only the side to move can be moved, and only legal moves are possible.
+- A correct move is confirmed and the opponent's reply is played automatically. Then the class looks for the next move.
+- A wrong move is marked and taken back after a moment, so the class can try again.
+- Any checkmating move counts as correct, even if it isn't the one in the file.
+- **Show solution** reveals the moves and their explanations. Step through them as in a lesson. **Start over** resets the puzzle.
+
+### Adding puzzles
+
+Puzzles are PGN files in the `puzzles/` folder, with subfolders as categories, as for lessons. See [puzzles/checkmates/back-rank-mate.pgn](puzzles/checkmates/back-rank-mate.pgn) for an example. The format is the same as for lessons, but the parts mean:
+
+| PGN | Meaning |
+| --- | --- |
+| `[Event "..."]` | Puzzle title. |
+| `[SetUp "1"]` and `[FEN "..."]` | The puzzle position. The side to move in the FEN is the side solving the puzzle. |
+| `{ ... }` before the first move | The question. Without it, the app shows "White to move." or "Black to move." |
+| Moves | The solution: the solver's moves and the opponent's replies. |
+| `{ ... }` after a move | Explanation, shown when the move is found or the solution is shown. |
+
+The board is shown from the solver's side unless `[Orientation]` says otherwise. If a file holds several games, each one is a separate puzzle in the menu.
+
+Only the move in the file is accepted, except that any checkmate is accepted. If the solution includes a pawn promotion, any promotion on the right square is accepted, because the board doesn't ask which piece to promote to.
 
 ## Using the board editor
 

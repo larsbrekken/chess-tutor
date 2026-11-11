@@ -6,9 +6,14 @@
   --sq: min(calc((100vh - var(--topbar) - 8rem) / 8), 9vw);
 }
 
-.page-lessons {
+.page-lessons,
+.page-puzzles {
   /* Leave room for the menu and the explanation panel beside the board. */
   --sq: min(calc((100vh - var(--topbar) - 3rem) / 8), calc((100vw - 42rem) / 8));
+}
+
+[hidden] {
+  display: none !important;
 }
 
 body {
@@ -179,9 +184,9 @@ button:disabled {
   font-size: 0.9rem;
 }
 
-/* ---- Lessons ------------------------------------------------------------- */
+/* ---- Lessons and puzzles ------------------------------------------------------------- */
 
-.page-body.lessons {
+.page-body.viewer {
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
@@ -190,14 +195,14 @@ button:disabled {
   box-sizing: border-box;
 }
 
-.lesson-menu {
+.menu {
   flex: none;
   width: 15rem;
   max-height: calc(var(--sq) * 8);
   overflow-y: auto;
 }
 
-.lesson-menu h2 {
+.menu h2 {
   margin: 0 0 0.4rem;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -205,13 +210,13 @@ button:disabled {
   color: #999;
 }
 
-.lesson-menu ul {
+.menu ul {
   list-style: none;
   margin: 0 0 1.25rem;
   padding: 0;
 }
 
-.lesson-menu a {
+.menu a {
   display: block;
   padding: 0.4rem 0.6rem;
   border-radius: 4px;
@@ -219,11 +224,11 @@ button:disabled {
   text-decoration: none;
 }
 
-.lesson-menu a:hover {
+.menu a:hover {
   background: #3a3a3a;
 }
 
-.lesson-menu a.active {
+.menu a.active {
   background: #4a4a4a;
   color: #fff;
 }
@@ -245,7 +250,7 @@ button:disabled {
   color: #e88;
 }
 
-.lesson-panel {
+.panel {
   flex: none;
   width: 22rem;
   max-height: calc(var(--sq) * 8);
@@ -254,7 +259,7 @@ button:disabled {
   gap: 1rem;
 }
 
-.lesson-panel h1 {
+.panel h1 {
   margin: 0;
   font-size: 1.6rem;
   color: #fff;
@@ -289,7 +294,7 @@ button:disabled {
 }
 
 /* The explanation is the main thing the class reads, so make it large. */
-.lesson-text {
+.big-text {
   margin: 0;
   font-size: 1.35rem;
   line-height: 1.45;
@@ -300,10 +305,6 @@ button:disabled {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.step-controls[hidden] {
-  display: none;
 }
 
 .step-controls button {
@@ -342,4 +343,72 @@ button:disabled {
 .move-list .move.current {
   background: #f0d9b5;
   color: #222;
+}
+
+/* ---- Puzzles ------------------------------------------------------------- */
+
+.puzzle-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.puzzle-actions button {
+  font-size: 1.05rem;
+  padding: 0.5rem 1rem;
+}
+
+.feedback {
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  border-left: 5px solid;
+  font-size: 1.2rem;
+}
+
+.feedback strong {
+  font-size: 1.45rem;
+}
+
+.feedback p {
+  margin: 0.4rem 0 0;
+  line-height: 1.4;
+}
+
+.feedback.correct {
+  background: #263a26;
+  border-color: #6fbf4a;
+}
+
+.feedback.correct strong {
+  color: #9fe07a;
+}
+
+.feedback.wrong {
+  background: #3d2626;
+  border-color: #d9534f;
+}
+
+.feedback.wrong strong {
+  color: #ff8a85;
+}
+
+.feedback.solved {
+  background: #3b3420;
+  border-color: #f0c040;
+}
+
+.feedback.solved strong {
+  color: #ffd866;
+}
+
+.solution {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid #444;
+  padding-top: 1rem;
+}
+
+/* The question is short; don't reserve room for a long explanation. */
+#puzzle-prompt {
+  min-height: 0;
 }
