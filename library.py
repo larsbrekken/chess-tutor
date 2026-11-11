@@ -60,6 +60,35 @@ def color_name(color):
     return "white" if color == chess.WHITE else "black"
 
 
+def legal_dests(board, dests=None):
+    """Legal moves as chessground expects them: {from square: [to squares]}."""
+    dests = {} if dests is None else dests
+    for move in board.legal_moves:
+        orig, dest = chess.square_name(move.from_square), chess.square_name(move.to_square)
+        if dest not in dests.setdefault(orig, []):
+            dests[orig].append(dest)  # promotions give the same square several times
+    return dests
+
+
+def editor_dests(board_fen):
+    """Legal moves for both sides of a position being set up in the board editor.
+
+    The editor has no side to move, so each piece gets the moves it would have
+    if it were its side's turn. Castling counts as allowed whenever king and
+    rook are on their starting squares; en passant is never shown.
+    Raises ValueError if ``board_fen`` is not a valid piece placement.
+    """
+    dests = {}
+    for color in (chess.WHITE, chess.BLACK):
+        board = chess.Board(None)
+        board.set_board_fen(board_fen)
+        board.turn = color
+        board.set_castling_fen("KQkq")
+        board.castling_rights = board.clean_castling_rights()
+        legal_dests(board, dests)
+    return dests
+
+
 def position(board, with_moves=False):
     result = {
         "fen": board.board_fen(),
@@ -69,17 +98,14 @@ def position(board, with_moves=False):
     if with_moves:
         # For puzzles: the legal moves, so only those can be played on the board,
         # and every mating move, so any checkmate counts as a correct answer.
-        dests = {}
         mates = {}
         for move in board.legal_moves:
-            orig, dest = chess.square_name(move.from_square), chess.square_name(move.to_square)
-            if dest not in dests.setdefault(orig, []):
-                dests[orig].append(dest)
             board.push(move)
             if board.is_checkmate():
-                mates.setdefault(orig + dest, board.board_fen())
+                key = chess.square_name(move.from_square) + chess.square_name(move.to_square)
+                mates.setdefault(key, board.board_fen())
             board.pop()
-        result["dests"] = dests
+        result["dests"] = legal_dests(board)
         result["mates"] = mates
     return result
 

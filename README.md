@@ -88,4 +88,5 @@ Only the move in the file is accepted, except that any checkmate is accepted. If
 - Drag pieces from the trays on either side onto the board.
 - Drag a piece on the board to move it anywhere. Dropping it on another piece replaces that piece.
 - Drag a piece off the board to remove it.
+- Click a piece to see its legal moves as dots, as if it were that side's turn. They're only a guide: you can still put the piece anywhere. Castling is shown when the king and rook are on their starting squares; en passant isn't shown.
 - **Starting position** and **Clear board** reset the board.

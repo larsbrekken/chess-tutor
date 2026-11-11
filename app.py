@@ -7,9 +7,9 @@ import threading
 import webbrowser
 from pathlib import Path
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 
-from library import load_lesson_library, load_puzzle_library
+from library import editor_dests, load_lesson_library, load_puzzle_library
 
 HOST = "127.0.0.1"
 PORT = 8765
@@ -43,6 +43,15 @@ def lessons_api():
 @app.route("/api/puzzles")
 def puzzles_api():
     return jsonify(load_puzzle_library(PUZZLES_DIR))
+
+
+@app.route("/api/legal-moves")
+def legal_moves_api():
+    """Legal moves for the board editor: ?fen=<piece placement>."""
+    try:
+        return jsonify(editor_dests(request.args.get("fen", "")))
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 400
 
 
 if __name__ == "__main__":
