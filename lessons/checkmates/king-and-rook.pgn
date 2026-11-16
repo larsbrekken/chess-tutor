@@ -1,0 +1,48 @@
+[Event "Push the king to the edge and checkmate"]
+[StudyName "Checkmate with king and rook"]
+[SetUp "1"]
+[FEN "8/8/8/8/2K1k3/8/8/3R4 w - - 0 1"]
+
+{ Use your rook and king together to force the opponent's king to the edge of the board, and then checkmate it. To push the king back, attack with your rook, protected by your king. Your rook, your king and their king form a triangle. }
+1. Rd3 { [%cal Bd3d8,Bd3h3] The rook moves from d1 to d3, protected by the king. The rook builds a wall (the blue lines): the black king can't cross the d-file or the 3rd rank. }
+1... Ke5
+2. Rd4 { [%cal Bd4d8,Bd4h4] Move the rook to push the king towards the edge. Now the king can't cross the 4th rank. }
+2... Ke6
+3. Rd5 { [%cal Bd5d8,Bd5h5] Now the king can't cross the 5th rank. The box is getting smaller. }
+3... Ke7
+4. Kc5 { Move your king whenever you can, so the opponent's king can't attack the rook. King and rook work together to push the king to the edge. }
+4... Ke6 { The black king attacks the rook... }
+5. Kc6 { ...so the white king steps up to protect it. }
+5... Ke7
+6. Rd6 { [%cal Bd6d8,Bd6h6] Keep using the rook to shrink the board, and move the king when you can to protect the rook, until the opponent's king reaches the edge. }
+6... Ke8
+7. Rd7 { [%cal Bd7a7,Bd7h7] The king is on the edge. The rook on d7 keeps it on the 8th rank. }
+7... Kf8
+8. Kd6 { Now move your king one square at a time towards the opponent's king, staying a file or rank apart. You are trying to line the kings up so you can checkmate. }
+8... Kg8
+9. Ke6
+9... Kf8
+10. Kf6
+10... Kg8 { The kings were lined up on the f-file, but it was Black's turn, so the king stepped away. }
+11. Rc7 { [%cal Bc7h7] A waiting move. The rook stays on the 7th rank, so the king is still stuck on the edge, and now it's Black's turn again. }
+11... Kh8
+12. Kg6
+12... Kg8 { The king's only move. Now the kings are lined up on the g-file, and it's White's turn. }
+13. Rc8# { [%cal Rc8g8] This is checkmate. Why? }
+
+[Event "Watch out for stalemate"]
+[StudyName "Checkmate with king and rook"]
+[SetUp "1"]
+[FEN "7k/6R1/6K1/8/8/8/8/8 b - - 0 1"]
+
+{ When you have forced the king to the edge of the board, don't bring the rook too close, or it can be stalemate. This is stalemate if it's Black's turn to move. Why? }
+
+[Event "Zugzwang"]
+[StudyName "Checkmate with king and rook"]
+[SetUp "1"]
+[FEN "3k4/4R3/2K5/8/8/8/8/8 w - - 0 1"]
+
+{ Sometimes the opponent attacks your rook while you are trying to line up the kings. This can be a fatal mistake, leading to checkmate in two moves. Here the black king has just attacked the white rook by moving to d8. }
+1. Re3 { [%csl Be1,Be2,Be4,Be5,Be6] The rook moves anywhere on the e-file except e8. }
+1... Kc8 { The king has to move to c8. This is called zugzwang: being forced to move when every move makes things worse. That's what happened to Black. }
+2. Re8# { [%cal Re3e8] White checkmates with the rook on e8. }
