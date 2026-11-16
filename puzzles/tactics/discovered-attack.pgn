@@ -1,0 +1,9 @@
+[Event "Discovered attack"]
+[Site "https://lichess.org/training/Tavev"]
+[SetUp "1"]
+[FEN "8/4k1p1/7p/R2P3r/8/4K3/8/8 w - - 0 1"]
+
+{ White to move and win the rook. }
+1. d6+ { [%cal Gd5d6] [%cal Ra5h5] The pawn moves forward with check, and now the rook on a5 attacks the rook on h5. This is a discovered attack. }
+1... Ke6 { Black has to get out of check first. }
+2. Rxh5 { White wins the rook. }

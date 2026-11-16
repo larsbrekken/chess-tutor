@@ -1,0 +1,9 @@
+[Event "Rook on the back rank"]
+[Site "https://lichess.org/training/bh1rY"]
+[SetUp "1"]
+[FEN "7k/bp4pp/pq4p1/3Q4/2P3P1/1P6/1P2R1K1/5r2 w - - 0 1"]
+
+{ White to move and mate in 2. }
+1. Re8+ { [%cal Ge2e8] Check on the back rank. The black king is trapped behind its own pawns, so Black has to block. }
+1... Rf8
+2. Rxf8# { [%cal Gd5g8] [%csl Rh8] White takes the blocking rook. The queen on d5 covers g8, so the king has nowhere to go. }

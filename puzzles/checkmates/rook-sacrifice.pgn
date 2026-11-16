@@ -1,0 +1,9 @@
+[Event "Rook sacrifice"]
+[Site "https://lichess.org/training/HY1fk"]
+[SetUp "1"]
+[FEN "4QQ2/kpp5/pb6/7p/P2q4/7r/6PB/5R1K b - - 0 1"]
+
+{ White has just made a second queen, but it's Black's move. Black to move and mate in 2. }
+1... Rxh2+ { [%cal Gh3h2] [%cal Bb6g1,Bd4g1] Sacrifice the rook! The king can't escape to g1, because the bishop and queen cover it, so it has to take. }
+2. Kxh2
+2... Qh4# { [%cal Gd4h4] [%csl Rh2] The queen checks along the h-file. The bishop still covers g1, and the queen covers g3 and h3, so it's mate. }

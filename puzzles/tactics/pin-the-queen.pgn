@@ -1,0 +1,9 @@
+[Event "Pin the queen"]
+[Site "https://lichess.org/training/MdiR2"]
+[SetUp "1"]
+[FEN "r3kn1r/p1q1bpp1/2p1p1p1/3p4/5PP1/2N1P2P/PPPB1Q2/R3K2R b KQkq - 1 1"]
+
+{ Black to move and win the queen. }
+1... Bh4 { [%cal Ge7h4] [%cal Rh4e1] The bishop pins the white queen to the king. The queen can't step off the diagonal, because that would leave the king in check. }
+2. Qxh4 { The best White can do is give up the queen for the bishop. }
+2... Rxh4 { [%cal Gh8h4] The rook takes back. Black has won the queen for a bishop. }

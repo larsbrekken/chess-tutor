@@ -1,0 +1,9 @@
+[Event "Knight fork"]
+[Site "https://lichess.org/training/QhxSM"]
+[SetUp "1"]
+[FEN "3N3k/p1p1b1pp/1p6/6q1/2nP4/P1P5/1P2Q2P/7K w - - 0 1"]
+
+{ White to move and win the queen. }
+1. Nf7+ { [%cal Gf7h8,Gf7g5] A fork! The knight checks the king and attacks the queen at the same time. }
+1... Kg8
+2. Nxg5 { The king had to move out of check, so the knight takes the queen. Black can take back with the bishop, but White has won a queen for a knight. }
