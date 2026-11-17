@@ -340,6 +340,19 @@ button:disabled {
   background: #3a3a3a;
 }
 
+/* A move the lesson hasn't reached yet, while moves are hidden. */
+.move-list .move.hidden-move {
+  min-width: 2.2em;
+  color: #777;
+  background: #333;
+}
+
+.move-list-options button {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+  background: #3a3a3a;
+}
+
 .move-list .move.current {
   background: #f0d9b5;
   color: #222;

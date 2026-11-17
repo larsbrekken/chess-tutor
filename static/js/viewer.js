@@ -110,15 +110,22 @@ export function renderMoveList(list, steps, onSelect) {
     }
     const move = textEl('button', 'move', step.san);
     move.dataset.step = i + 1;
+    move.dataset.san = step.san;
     move.addEventListener('click', () => onSelect(i + 1));
     list.append(move);
   });
 }
 
-export function highlightMove(list, n) {
-  for (const move of list.querySelectorAll('.move')) {
-    move.classList.toggle('current', Number(move.dataset.step) === n);
-  }
+// Mark move `n` as the current one. With hideFuture, moves after it show as "?"
+// so the class can't read ahead; they can still be clicked to jump there.
+export function highlightMove(list, n, hideFuture = false) {
+  list.querySelectorAll('.move').forEach((move, i) => {
+    const step = i + 1;
+    const hidden = hideFuture && step > n;
+    move.classList.toggle('current', step === n);
+    move.classList.toggle('hidden-move', hidden);
+    move.textContent = hidden ? '?' : move.dataset.san;
+  });
 }
 
 // Arrow keys, Home and End call step(delta) / step(±Infinity) while enabled() is true.

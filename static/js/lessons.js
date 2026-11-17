@@ -12,6 +12,7 @@ const state = {
   lesson: null,
   chapter: null,
   step: 0, // 0 = starting position, n = after the n-th move
+  showMoves: false, // moves not reached yet are hidden until the tutor reveals them
 };
 
 function openLesson(lesson) {
@@ -37,6 +38,8 @@ function openChapter(index) {
   }
 
   renderMoveList(byId('move-list'), state.chapter.steps, showStep);
+  state.showMoves = false;
+  byId('btn-show-moves').hidden = state.chapter.steps.length === 0;
   showStep(0);
 }
 
@@ -54,13 +57,22 @@ function showStep(n) {
 
   byId('btn-first').disabled = byId('btn-prev').disabled = state.step === 0;
   byId('btn-last').disabled = byId('btn-next').disabled = state.step === total;
-  highlightMove(byId('move-list'), state.step);
+  updateMoveList();
+}
+
+function updateMoveList() {
+  highlightMove(byId('move-list'), state.step, !state.showMoves);
+  byId('btn-show-moves').textContent = state.showMoves ? 'Hide moves' : 'Show moves';
 }
 
 byId('btn-first').addEventListener('click', () => showStep(0));
 byId('btn-prev').addEventListener('click', () => showStep(state.step - 1));
 byId('btn-next').addEventListener('click', () => showStep(state.step + 1));
 byId('btn-last').addEventListener('click', () => showStep(Infinity));
+byId('btn-show-moves').addEventListener('click', () => {
+  state.showMoves = !state.showMoves;
+  updateMoveList(); // leaves the board alone, in case pieces were moved by hand
+});
 stepKeys((delta) => showStep(state.step + delta), () => state.chapter !== null);
 
 const lessons = await loadMenu(menu, '/api/lessons', 'No lessons yet. Add .pgn files to the lessons folder.');
