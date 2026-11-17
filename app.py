@@ -1,6 +1,7 @@
-"""Chess Tutor: a local web app for teaching chess concepts to a class.
+"""Chess Tutor: a web app for teaching chess concepts to a class.
 
-Run with `python app.py`; it opens the app in your default browser.
+Run locally with `python app.py`; it opens the app in your default browser.
+On Render, gunicorn runs `app` directly (see render.yaml).
 """
 
 import threading
@@ -15,8 +16,16 @@ HOST = "127.0.0.1"
 PORT = 8765
 LESSONS_DIR = Path(__file__).parent / "lessons"
 PUZZLES_DIR = Path(__file__).parent / "puzzles"
+# Linked from every page. The app is GPL-3.0 (like the chessground board it
+# uses), so visitors must be able to get the source.
+SOURCE_URL = "https://github.com/larsbrekken/chess-tutor"
 
 app = Flask(__name__)
+
+
+@app.context_processor
+def template_globals():
+    return {"source_url": SOURCE_URL}
 
 
 @app.route("/")

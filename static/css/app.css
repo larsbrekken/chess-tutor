@@ -53,6 +53,11 @@ body {
   color: #fff;
 }
 
+.topbar .source-link {
+  margin-left: auto;
+  font-size: 0.85rem;
+}
+
 .page-body {
   min-height: calc(100vh - var(--topbar));
   display: flex;

@@ -1,6 +1,6 @@
 # Chess Tutor
 
-A teaching board for chess tutors. The tutor runs it on their own computer and shows it to a class, for example on a projector, to explain chess concepts.
+A teaching board for chess tutors. The tutor shows it to a class, for example on a projector, to explain chess concepts. It runs on the tutor's own computer or as a public website.
 
 ## Features
 
@@ -12,7 +12,7 @@ The app doesn't evaluate moves or need user accounts.
 
 ## Tech stack
 
-- Python with [Flask](https://flask.palletsprojects.com/), run locally on the tutor's computer
+- Python with [Flask](https://flask.palletsprojects.com/)
 - [python-chess](https://python-chess.readthedocs.io/) reads the lesson and puzzle files
 - The board is [chessground](https://github.com/lichess-org/chessground) (the lichess board), included in `static/vendor/` so the app works offline
 
@@ -25,6 +25,14 @@ python3 -m venv .venv
 ```
 
 This opens the app in your browser at http://127.0.0.1:8765/.
+
+To test it the way it runs on the public site, start it with the production server instead:
+
+```sh
+.venv/bin/gunicorn app:app --bind 127.0.0.1:8000
+```
+
+and open http://127.0.0.1:8000/.
 
 ## Giving a lesson
 
@@ -90,3 +98,23 @@ Only the move in the file is accepted, except that any checkmate is accepted. If
 - Drag a piece off the board to remove it.
 - Click a piece to see its legal moves as dots, as if it were that side's turn. They're only a guide: you can still put the piece anywhere. Castling is shown when the king and rook are on their starting squares; en passant isn't shown.
 - **Starting position** and **Clear board** reset the board.
+
+## Publishing the website
+
+The public site is hosted on [Render](https://render.com). Render watches the GitHub repository and redeploys automatically whenever `main` changes, so pushing to GitHub is all it takes to publish a change. The new version is usually live within a few minutes. The settings are in [render.yaml](render.yaml).
+
+### One-time setup
+
+1. Create a Render account and connect it to your GitHub account.
+2. In Render, choose **New > Blueprint** and pick the `chess-tutor` repository. Render reads `render.yaml` and creates the web service. The first deploy takes a few minutes; the site is then at an address like `chess-tutor.onrender.com`.
+3. Optional: on the free plan the site sleeps after about 15 minutes without visitors, and the next visit takes up to a minute to load. To keep it always on, change the service to a paid plan in Render's dashboard (or change `plan: free` to `plan: starter` in `render.yaml`).
+
+### Using your own domain
+
+1. In Render, open the service, go to **Settings > Custom Domains**, and add your domain (for example `chesstutor.com`, and also `www.chesstutor.com`).
+2. Render shows the DNS records to create. Add them at the company you bought the domain from, usually a `CNAME` record for `www` and an `A` or `ALIAS` record for the bare domain.
+3. Once the DNS change has spread (minutes to a few hours), Render verifies the domain and sets up HTTPS automatically.
+
+## License
+
+Chess Tutor is free software under the [GNU General Public License v3.0 or later](LICENSE). It uses [chessground](https://github.com/lichess-org/chessground), which is GPL-3.0, so the source code must stay available to everyone who uses the site; every page links to this repository. The puzzles taken from the [lichess puzzle database](https://database.lichess.org/#puzzles) are in the public domain (CC0).

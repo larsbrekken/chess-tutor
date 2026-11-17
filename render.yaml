@@ -1,0 +1,14 @@
+# Render deployment settings. Render reads this file when you create the
+# service with "New > Blueprint", and redeploys on every push to main.
+services:
+  - type: web
+    name: chess-tutor
+    runtime: python
+    # "free" sleeps after about 15 minutes idle (slow first visit afterwards);
+    # "starter" is paid and always on. Can also be changed in Render's dashboard.
+    plan: free
+    branch: main
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    healthCheckPath: /
