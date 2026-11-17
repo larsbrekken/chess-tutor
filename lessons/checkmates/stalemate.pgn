@@ -1,0 +1,60 @@
+[Event "What is stalemate?"]
+[StudyName "Stalemate"]
+[SetUp "1"]
+[FEN "2k5/8/1QK5/8/8/8/8/8 b - - 0 1"]
+
+{ You have a king and queen, and your opponent has only a king. It's Black's move, but the black king has nowhere to go. You're not attacking it, and you're ready to checkmate next move. Are you in good shape? No! If a player has no legal move and their king is not in check, it's stalemate. You don't win, and you don't lose: the game is a draw. You had all the power and missed a certain win. }
+
+[Event "Diagram 1: find the stalemate"]
+[StudyName "Stalemate"]
+[SetUp "1"]
+[FEN "7K/8/6k1/8/6bp/7P/8/8 b - - 0 1"]
+
+{ In these positions, find the BAD move: the move that throws away the win by causing stalemate. Black is winning here. Black to move: which move leads to stalemate? Why? }
+1... Be6 { [%cal Ge6g8] [%csl Rh8,Rh3] Stalemate! The bishop covers g8, and the black king covers g7 and h7, so the white king can't move. White still has a pawn, but it's blocked by the black pawn on h4. If any other piece could move, it would not be stalemate. Here none can. }
+
+[Event "Diagram 1: the winning plan"]
+[StudyName "Stalemate"]
+[SetUp "1"]
+[FEN "7K/8/6k1/8/6bp/7P/8/8 b - - 0 1"]
+
+{ Black to move. What should Black play instead to keep winning? }
+1... Bxh3 { [%cal Gh4h1] [%csl Gh1] The bishop takes White's last pawn, and the white king still has a move, so it's not stalemate. Once the bishop steps aside, Black's h-pawn marches to h1 and becomes a queen. The bishop guards h1, a light square like the bishop's, and the white king is too far away to stop it. Then Black can checkmate. }
+
+[Event "Diagram 2: find the stalemate"]
+[StudyName "Stalemate"]
+[SetUp "1"]
+[FEN "2k5/8/1K6/3RN3/8/8/8/8 w - - 0 1"]
+
+{ White is winning. White to move: which move leads to stalemate? Why? }
+1. Nc6 { [%cal Gc6b8,Gc6d8] [%csl Rc8] Stalemate! The knight covers b8 and d8, the rook covers d7, and the white king covers b7 and c7. The black king isn't in check, but it can't move, and Black has no other pieces. }
+
+[Event "Diagram 2: checkmate"]
+[StudyName "Stalemate"]
+[SetUp "1"]
+[FEN "2k5/8/1K6/3RN3/8/8/8/8 w - - 0 1"]
+
+{ White to move. How does White checkmate instead? }
+1. Rd7 { [%cal Ge5d7] The rook moves to the 7th rank, protected by the knight. The black king still has one move, so it's not stalemate. }
+1... Kb8 { The only move. }
+2. Rd8# { [%cal Gd8a8] [%csl Rb8] Checkmate! The rook checks along the 8th rank, and the white king covers a7, b7 and c7. }
+
+[Event "Diagram 3: find the stalemate"]
+[StudyName "Stalemate"]
+[SetUp "1"]
+[FEN "3K4/5k2/q7/8/8/8/8/8 b - - 0 1"]
+
+{ Black is winning. Black to move: which move leads to stalemate? Why? }
+1... Qb7 { [%csl Rd8,Bc6] Stalemate! The queen covers c8, c7 and d7, and the black king covers e8 and e7, so the white king can't move. Moving the queen to c6 (the blue square) is stalemate too. }
+
+[Event "Diagram 3: checkmate"]
+[StudyName "Stalemate"]
+[SetUp "1"]
+[FEN "3K4/5k2/q7/8/8/8/8/8 b - - 0 1"]
+
+{ Black to move. How does Black checkmate instead? }
+1... Qa7 { [%cal Ga7e7] The queen takes away the 7th rank. The white king still has one move, c8, so it's not stalemate. }
+2. Kc8
+2... Ke6 { The black king comes closer to help. White's king still has d8, so again it's not stalemate. }
+3. Kd8
+3... Qd7# { [%csl Rd8] Checkmate! The queen is protected by the black king. }
