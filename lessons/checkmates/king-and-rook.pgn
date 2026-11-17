@@ -40,9 +40,10 @@
 [Event "Zugzwang"]
 [StudyName "Checkmate with king and rook"]
 [SetUp "1"]
-[FEN "3k4/4R3/2K5/8/8/8/8/8 w - - 0 1"]
+[FEN "2k5/4R3/2K5/8/8/8/8/8 b - - 0 1"]
 
-{ Sometimes the opponent attacks your rook while you are trying to line up the kings. This can be a fatal mistake, leading to checkmate in two moves. Here the black king has just attacked the white rook by moving to d8. }
-1. Re3 { [%csl Be1,Be2,Be4,Be5,Be6] The rook moves anywhere on the e-file except e8. }
-1... Kc8 { The king has to move to c8. This is called zugzwang: being forced to move when every move makes things worse. That's what happened to Black. }
-2. Re8# { [%cal Re3e8] White checkmates with the rook on e8. }
+{ Sometimes the opponent attacks your rook while you are trying to line up the kings. This can be a fatal mistake, leading to checkmate in two moves. }
+1... Kd8 { [%cal Rd8e7] The black king attacks the white rook by moving to d8. }
+2. Re3 { [%csl Be1,Be2,Be4,Be5,Be6] The rook moves anywhere on the e-file except e8. }
+2... Kc8 { The king has to move to c8. This is called zugzwang: being forced to move when every move makes things worse. That's what happened to Black. }
+3. Re8# { [%cal Re3e8] White checkmates with the rook on e8. }
