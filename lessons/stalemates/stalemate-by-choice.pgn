@@ -1,0 +1,35 @@
+[Event "Diagram 1"]
+[StudyName "Stalemate by choice"]
+[SetUp "1"]
+[FEN "8/8/8/6r1/5K1k/5Q2/8/8 b - - 0 1"]
+
+{ Your opponent has better pieces and a better position, and is going to win. But it's your move! If you have no legal move and your king is not in check, it's stalemate, and the game is a draw. Where is White threatening checkmate? Black to move: how can Black avoid it and get a draw? }
+1... Rf5+ { [%cal Gg5f5] White was threatening Qh1#. Instead, the rook gives check. The black king has no squares to go to, so if White takes the rook, Black has no legal move. }
+2. Kxf5 { [%csl Rh4] Stalemate! The black king has no legal move and isn't in check. If the white king steps away instead, the rook just keeps giving check. }
+
+[Event "Diagram 2"]
+[StudyName "Stalemate by choice"]
+[SetUp "1"]
+[FEN "8/6k1/8/5p2/4p1p1/6Pp/1b3B1P/7K w - - 0 1"]
+
+{ Black is winning. White to move: how can White get a draw in one move, or win the black bishop? }
+1. Bd4+ { [%cal Gd4g7,Bd4b2] The bishop gives check and offers itself to the black bishop. If the black king moves instead, White takes the bishop on b2. }
+1... Bxd4 { [%csl Rh1] Stalemate! The bishop covers g1 and the pawn on h3 covers g2, so the white king can't move. Both white pawns are blocked, so White has no legal move. }
+
+[Event "Diagram 3"]
+[StudyName "Stalemate by choice"]
+[SetUp "1"]
+[FEN "8/kp3q2/p2p4/P3p3/7Q/8/8/7K w - - 0 1"]
+
+{ Black is winning. White to move: how can White get a draw in one move, or win the black queen? }
+1. Qf2+ { [%cal Gf2a7,Gf2f7] The queen checks the king and attacks the black queen at the same time. If Black doesn't take, White takes the queen on f7. }
+1... Qxf2 { [%csl Rh1] Stalemate! The black queen covers g1, g2 and h2, and the white pawn on a5 is blocked, so White has no legal move. }
+
+[Event "Diagram 4"]
+[StudyName "Stalemate by choice"]
+[SetUp "1"]
+[FEN "6k1/R7/6NK/5r2/8/8/8/8 b - - 0 1"]
+
+{ White is winning. Where is White threatening checkmate? Black to move: how can Black get a draw in one move? }
+1... Rh5+ { [%cal Gf5h5] White was threatening Rg7#. The rook gives check right next to the white king, and taking it is White's only legal move. }
+2. Kxh5 { [%csl Rg8] Stalemate! The knight covers f8 and h8, and the rook covers f7, g7 and h7, so the black king can't move. }
