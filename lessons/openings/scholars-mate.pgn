@@ -1,0 +1,50 @@
+[Event "The weak square on f7"]
+[StudyName "Scholar's Mate"]
+[Orientation "black"]
+
+{ [%csl Rf7,Rf2] At the start of the game, the square f7 is weak. Only the black king protects it. The same is true of f2 for White. Many quick attacks aim at these squares. If you attack f7 with two pieces, and only the king defends it, you may be able to take there with checkmate. }
+
+[Event "Scholar's Mate"]
+[StudyName "Scholar's Mate"]
+[Orientation "black"]
+
+{ Watch how White's queen and bishop team up against f7. }
+1. e4 { [%cal Gd1h5,Gf1c4] Moving the e-pawn opens lines for the queen and the bishop. }
+1... e5
+2. Bc4 { [%cal Gc4f7] The bishop aims at f7. }
+2... Nc6
+3. Qh5 { [%cal Gh5f7,Gc4f7,Yh5e5] Now the queen attacks f7 too. Two attackers, and only the king defends. The queen also attacks the pawn on e5, but the knight on c6 protects it. What should Black do? }
+3... Nf6 { [%cal Rf6h5] This looks like a good move, because the knight attacks the queen. But Black has ignored the threat on f7. }
+4. Qxf7# { [%cal Gc4f7] [%csl Re8] Checkmate! The king can't take the queen, because the bishop protects it. Every square the king could go to is covered or blocked by its own pieces. }
+
+[Event "How to defend"]
+[StudyName "Scholar's Mate"]
+[Orientation "black"]
+
+{ You are Black. White sets up Scholar's Mate again. This time, Black defends. }
+1. e4 e5 2. Bc4 Nc6 3. Qh5 { [%cal Rh5f7,Rc4f7] White threatens Qxf7#. Find a move that stops it. }
+3... g6 { [%cal Gg6h5] The pawn blocks the queen's line to f7 and attacks the queen. White must move the queen. Qe7 and Qf6 also defend f7, but g6 is the best. }
+4. Qf3 { [%cal Rf3f7,Rc4f7] The queen aims at f7 again, from a different direction. White threatens Qxf7# again. }
+4... Nf6 { [%cal Gf6f3] The knight blocks the queen's line to f7, and brings a new piece into the game. f7 is safe. White's queen has moved three times, while Black has brought out pieces. Black is doing well. }
+
+[Event "When the e-pawn is unprotected"]
+[StudyName "Scholar's Mate"]
+[Orientation "black"]
+
+{ This time Black brings out the bishop instead of the knight. Does the same defence still work? }
+1. e4 e5 2. Bc4 Bc5 3. Qh5 { [%cal Rh5f7,Rc4f7,Rh5e5] White has two threats. Qxf7# is checkmate, and the pawn on e5 has no protection. Can Black play g6, like before? No! After g6, the queen takes on e5 with check, and then takes the rook on h8. Find a move that stops both threats. }
+3... Qe7 { [%cal Ge7f7,Ge7e5] The queen protects f7 and e5 with one move. Qf6 also protects both, but it takes the square the knight wants. }
+4. Nf3 { [%cal Rf3e5,Rh5e5] The knight attacks e5 too. Now two white pieces attack it, and only the queen defends it. }
+4... Nc6 { [%cal Gc6e5] The knight protects e5 a second time. f7 and e5 are both safe, and Black is bringing out pieces. }
+
+[Event "The queen comes first"]
+[StudyName "Scholar's Mate"]
+[Orientation "black"]
+
+{ Sometimes White brings the queen out first. The idea is the same, but be careful how you defend. }
+1. e4 e5 2. Qh5 { [%cal Rh5e5,Rh5f7] The queen attacks the pawn on e5, and also looks at f7. Can Black play g6 to attack the queen? No! After g6, the queen takes on e5 with check, and then takes the rook on h8. }
+2... Nc6 { [%cal Gc6e5] First protect the pawn on e5. }
+3. Bc4 { [%cal Rh5f7,Rc4f7] Now White threatens Qxf7#. }
+3... g6 { [%cal Gg6h5] Now g6 is safe, because the knight protects e5. The queen must move. }
+4. Qf3 { [%cal Rf3f7,Rc4f7] White threatens checkmate on f7 again. }
+4... Nf6 { [%cal Gf6f3] The knight blocks the line, just as before. Black has defended and developed. }
